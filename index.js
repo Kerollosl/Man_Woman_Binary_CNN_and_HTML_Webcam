@@ -8,7 +8,14 @@ async function predict() {
   while (isPredicting) {
     const predictedClass = tf.tidy(() => {
       //Get webcam captured image for predicting
-      const img = webcam.capture();
+      let img = webcam.capture();
+
+      // Resize the image to 64x64
+      img = tf.image.resizeBilinear(img, [64, 64]);
+      
+      // Make sure the image has a batch dimension
+      //img = img.expandDims(0);
+
       const predictions = model.predict(img);
 
       return predictions.dataSync()[0];
@@ -27,12 +34,12 @@ async function predict() {
     // Update the DOM with the prediction label and confidence
     if (predictionText == "Man") {
       document.getElementById("prediction").innerHTML = `
-        <span style="font-size: 48px; color: blue;">${predictionText}</span><br>
-        <span style="font-size: 24px;">${Math.round(classId * 100)}%</span>`;
+        <span style="font-size: 72px; color: blue;">${predictionText}</span><br>
+        <span style="font-size: 36px;">${Math.round(classId * 100)}%</span>`;
     } else {
       document.getElementById("prediction").innerHTML = `
-        <span style="font-size: 48px; color: pink;">${predictionText}</span><br>
-        <span style="font-size: 24px;">${Math.round(
+        <span style="font-size: 72px; color: pink;">${predictionText}</span><br>
+        <span style="font-size: 36px;">${Math.round(
           (1 - classId) * 100
         )}%</span>`;
     }
