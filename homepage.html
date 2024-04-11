@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kerollos Lowandy HTML Webcam CNN</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-    <script src="./webcam.js"></script>
+    <script src="webcam.js"></script>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background-color: #f5f5f5;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        #container {
+            text-align: center;
+        }
+        #wc {
+            max-width: 90%;
+            height: auto;
+            transform: scaleX(-1);
+        }
+        #prediction {
+            font-size: 24px;
+            margin-top: 20px;
+        }
 
-      #container {
-        text-align: center;
-      }
-
-      #wc {
-        width: 500px;
-        height: 500px;
-        transform: scaleX(-1);
-      }
-
-      #prediction {
-        font-size: 24px;
-        margin-top: 20px;
-      }
+        @media (max-width: 600px) {
+            #prediction {
+                font-size: 18px;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div id="container">
-      <video autoplay playsinline muted id="wc"></video>
-      <div id="prediction"></div>
+        <video autoplay playsinline muted id="wc"></video>
+        <div id="prediction"></div>
     </div>
-    <script src="./index.js"></script>
-  </body>
+    <script src="index.js"></script>
+</body>
 </html>
