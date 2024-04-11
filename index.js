@@ -1,6 +1,6 @@
 const webcam = new Webcam(document.getElementById("wc"));
 let isPredicting = true;
-const MODEL_URL = "./men_women_model.json";
+const MODEL_URL = "https://raw.githubusercontent.com/Kerollosl/Man_Woman_Binary_CNN_and_HTML_Webcam/main/men_women_model.json";
 
 async function predict() {
   //Load tfjs converted model
